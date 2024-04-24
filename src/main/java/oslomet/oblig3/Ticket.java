@@ -16,6 +16,7 @@ public class Ticket {
         this.phoneNumber = phoneNumber;
         this.epost = epost;
     }
+    public Ticket(){}
 
     public String getFilm() {
         return film;

@@ -1,6 +1,8 @@
 $(document).ready(function () {
 
-    $("#registerButton").click(function () {
+    $("#registerButton").click(function() {
+
+
         //function enKnapp() {
         // let godkjent = true;
         sjekkAntall();
@@ -12,7 +14,6 @@ $(document).ready(function () {
             // godkjent = false;
         } else {
             registrere();   //muligens putte inn if/else, for å sjekke at et steg er vellykket før neste begynner
-            // visBilletter();
             resetFelter();
         }
         //}
