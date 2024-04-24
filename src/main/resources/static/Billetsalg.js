@@ -1,37 +1,18 @@
 $(document).ready(function () {
 
-    $("#registerButton").click(function() {
-
-
-        //function enKnapp() {
-        // let godkjent = true;
+    $("#registerButton").click(function () {
         sjekkAntall();
         sjekkFnavn();
         sjekkEnavn();
         sjekkTlfnr();
         sjekkEpost();
         if (sjekkAntall() === false || sjekkFnavn() === false || sjekkEnavn() === false || sjekkTlfnr() === false || sjekkEpost() === false) {
-            // godkjent = false;
         } else {
-            registrere();   //muligens putte inn if/else, for å sjekke at et steg er vellykket før neste begynner
+            registrere();
             resetFelter();
         }
-        //}
     })
 
-
-// function registrere() {
-//     const billett = {
-//         film: $("#Film").val(),
-//         antall: $("#Antall").val(),
-//         fnavn: $("#Fnavn").val(),
-//         enavn: $("#Enavn").val(),
-//         tlfnr: $("#Tlfnr").val(),
-//         epost: $("#Epost").val()
-//     }
-//     $.post("/registerTicket", billett, function () {
-//     })
-// }
     function registrere() {
         const billett = {
             film: $("#Film").val(),
@@ -44,15 +25,6 @@ $(document).ready(function () {
         $.post("/registerTicket", billett, function () {
             visBilletter()
         })
-        /*$.post("/registerTicket", billett)
-            .done(function(response) {
-                console.log(response);
-                alert("Ticket registered successfully");
-            })
-            .fail(function(xhr, status, error) {
-                console.error(xhr, status, error);
-                alert("Failed to register ticket");
-            });*/
     }
 
     function visBilletter() {
@@ -146,7 +118,8 @@ $(document).ready(function () {
             return true
         }
     }
-    $("#slettAlt").click(function(){
+
+    $("#slettAlt").click(function () {
         $.get("/deleteTickets", function () {
             // visBilletter();
             $("#visBilletter").html("");
@@ -154,4 +127,3 @@ $(document).ready(function () {
     })
 })
 
-//sletter feilmeldinger på input med en gang, må fikses

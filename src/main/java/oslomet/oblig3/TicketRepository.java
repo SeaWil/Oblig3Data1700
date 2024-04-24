@@ -12,19 +12,19 @@ public class TicketRepository {
     @Autowired
     private JdbcTemplate db;
 
-    public void saveTicket(Ticket newTicket){
+    public void saveTicket(Ticket newTicket) {
         String sql = "INSERT INTO ticket (film, amount, fName, sName, phoneNumber, epost) VALUES(?,?,?,?,?,?)";
-        db.update(sql, newTicket.getFilm(),newTicket.getAmount(), newTicket.getfName(), newTicket.getsName(), newTicket.phoneNumber, newTicket.getEpost());
+        db.update(sql, newTicket.getFilm(), newTicket.getAmount(), newTicket.getfName(), newTicket.getsName(), newTicket.phoneNumber, newTicket.getEpost());
     }
 
-    public List<Ticket> getTickets(){
+    public List<Ticket> getTickets() {
         String sql = "SELECT * FROM ticket Order By sName";
-        List<Ticket>allTickets = db.query(sql, new BeanPropertyRowMapper(Ticket.class));
-                //USIKKER PÅ <> etter BeanPropertyMapper
+        List<Ticket> allTickets = db.query(sql, new BeanPropertyRowMapper(Ticket.class));
+
         return allTickets;
     }
 
-    public void deleteAll(){
+    public void deleteAll() {
         String sql = "DELETE FROM ticket";
         db.update(sql);
     }
